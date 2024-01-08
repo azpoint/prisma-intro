@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+	//Create User and Post
 	const double = await prisma.user.create({
 		data: {
 			name: "Fernando",
@@ -10,17 +11,17 @@ async function main() {
 			post: {
 				create: {
 					title: "Prisma Tut",
-					content: "Tut practice"
-				}
-			}
-		}
-	})
+					content: "Tut practice",
+				},
+			},
+		},
+	});
 
-	console.log(double)
+	console.log(double);
 
-	const posts = await prisma.post.findMany()
+	const posts = await prisma.post.findMany();
 
-	console.log(posts)
+	console.log(posts);
 }
 
-main()
+main().catch((error) => console.log(error.message));

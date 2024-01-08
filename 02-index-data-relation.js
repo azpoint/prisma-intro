@@ -10,11 +10,12 @@ async function main() {
 		},
 	});
 
+	//Data relation between Post and User
 	const newPost = await prisma.post.create({
 		data: {
 			title: "My first post",
 			content: "This is my first post",
-			authorId: newUser.id
+			authorId: newUser.id,
 			// author: {
 			// 	connect: {
 			// 		id: newUser.id
@@ -23,7 +24,7 @@ async function main() {
 		},
 	});
 
-	console.log(newPost)
+	console.log(newPost);
 }
 
-main();
+main().catch((error) => console.log(error.message));
